@@ -44,11 +44,11 @@ This is a simple Spring Boot application for managing a library's database. The 
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/yourusername/library-api-spring-boot.git
+   git clone https://github.com/AfonsoFaria20s/library-api-spring-boot.git
    ```
 
 2. **Configure Database:**
-   - Open `src/main/resources/application.properties`.
+   - Open/Create `src/main/resources/application.properties`.
    - Update the `spring.datasource.url`, `spring.datasource.username`, and `spring.datasource.password` properties with your database connection details.
 
 3. **Build and Run:**
