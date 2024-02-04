@@ -24,6 +24,13 @@ public class AuthorController {
         return authorRepo.findAllById(Collections.singleton(id));
     }
 
+    @GetMapping("/byName")
+    public @ResponseBody List<Author> getAuthorByName(
+            @RequestParam String name
+    ) {
+        return authorRepo.findByName(name);
+    }
+
     @PostMapping("/add")
     public @ResponseBody String addNewAuthor(
             @RequestParam String name

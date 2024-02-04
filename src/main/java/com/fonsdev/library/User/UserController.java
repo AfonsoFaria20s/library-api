@@ -20,7 +20,7 @@ public class UserController {
     }
 
     //Find users by name
-    @GetMapping("/findByName")
+    @GetMapping("/byName")
     public @ResponseBody List<User> findByName(
             @RequestParam("name") String name
     ) {
@@ -28,7 +28,7 @@ public class UserController {
     }
 
     // Find user by id
-    @GetMapping("/findById")
+    @GetMapping("/byId")
     public @ResponseBody Optional<User> findById(
             @RequestParam("id") int id
     ) {

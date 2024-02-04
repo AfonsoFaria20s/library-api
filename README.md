@@ -44,7 +44,7 @@ This is a simple Spring Boot application for managing a library's database. The 
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/AfonsoFaria20s/library-api-spring-boot.git
+   git clone https://github.com/AfonsoFaria20s/library-api.git
    ```
 
 2. **Configure Database:**
@@ -53,9 +53,9 @@ This is a simple Spring Boot application for managing a library's database. The 
 
 3. **Build and Run:**
    ```bash
-   cd library-api-spring-boot
+   cd library-api
    mvn clean install
-   java -jar target/library-api-spring-boot-1.0.0.jar
+   java -jar target/library-api-1.0.0.jar
    ```
 
 4. **Access the Application:**
@@ -65,27 +65,37 @@ This is a simple Spring Boot application for managing a library's database. The 
 
 ### Accounts
 
+- **Get all Accounts:**
+  ```http
+  GET /accounts
+  ```
+
 - **Create Account:**
   ```http
-  POST /accounts
+  POST /accounts/add?name={name}&email={email}&age={age}
   ```
 
 - **Get Account by ID:**
   ```http
-  GET /accounts/{accountId}
+  GET /accounts/byId/{accountId}
   ```
 
-- **Update Account:**
+- **Get All Accounts by Name:**
+  ```http
+  GET /accounts/byName/{accountName}
+  ```
+
+- **Update Account: (Under Development)**
   ```http
   PUT /accounts/{accountId}
   ```
 
-- **Delete Account:**
+- **Delete Account: (Under Development)**
   ```http
   DELETE /accounts/{accountId}
   ```
 
-### Borrowers
+### Borrowers _(UNDER DEVELOPMENT)_
 
 - **Create Borrower:**
   ```http
@@ -107,7 +117,7 @@ This is a simple Spring Boot application for managing a library's database. The 
   DELETE /borrowers/{borrowerId}
   ```
 
-### Books
+### Books _(UNDER DEVELOPMENT)_
 
 - **Create Book:**
   ```http
@@ -131,22 +141,32 @@ This is a simple Spring Boot application for managing a library's database. The 
 
 ### Authors
 
+- **Get all Authors:**
+  ```http
+  GET /authors
+  ```
+
 - **Create Author:**
   ```http
-  POST /authors
+  POST /authors/add?name={authorName}
   ```
 
 - **Get Author by ID:**
   ```http
-  GET /authors/{authorId}
+  GET /authors/byId/{authorId}
   ```
 
-- **Update Author:**
+- **Get Author by Name:**
+  ```http
+  GET /authors/byName/{authorName}
+  ```
+
+- **Update Author: (Under Development)**
   ```http
   PUT /authors/{authorId}
   ```
 
-- **Delete Author:**
+- **Delete Author: (Under Development)**
   ```http
   DELETE /authors/{authorId}
   ```
@@ -156,25 +176,26 @@ This is a simple Spring Boot application for managing a library's database. The 
 ### Create Account
 
 ```http
-POST /accounts
+POST /accounts/add
 Content-Type: application/json
 
 {
-  "username": "john_doe",
+  "name": "john_doe",
   "email": "john.doe@example.com"
+  "age": 30
 }
 ```
 
 ### Get Account by ID
 
 ```http
-GET /accounts/1
+GET /accounts/byId/2
 ```
 
 ### Update Account
 
 ```http
-PUT /accounts/1
+PUT /accounts/2
 Content-Type: application/json
 
 {
