@@ -21,20 +21,23 @@ public class UserController {
     }
 
     //Find users by name
-    @GetMapping("/byName")
+    @GetMapping("/find")
     public @ResponseBody List<User> findByName(
-            @RequestParam("name") String name
+            @RequestParam(value = "id", required = false) Integer id,
+            @RequestParam(value = "name", required = false) String name,
+            @RequestParam(value = "email", required = false) String email
     ) {
-        return userRepository.findAllByName(name);
+        if(id!=null) {
+            return userRepository.findAllById(Collections.singleton(id));
+        } else if (name!=null) {
+            return userRepository.findAllByName(name);
+        } else if(email!=null) {
+            return userRepository.findByEmail(email);
+        }
+
+        return null;
     }
 
-    // Find user by id
-    @GetMapping("/byId")
-    public @ResponseBody Optional<User> findById(
-            @RequestParam("id") int id
-    ) {
-        return userRepository.findById(id);
-    }
 
     // Add new user
     @PostMapping("/add")
@@ -54,14 +57,6 @@ public class UserController {
         }
     }
 
-    //Delete user by email
-    @DeleteMapping("/deleteByEmail")
-    public String deleteByEmail(
-            @RequestParam String email
-    ) {
-        return "User with email \""+email+"\" deleted successfully.";
-    }
-
     //Delete user by id
     @DeleteMapping("/deleteById")
     public String deleteById(
@@ -71,31 +66,31 @@ public class UserController {
     }
 
     //Update user's name by id
-    @PutMapping("updateUserName/{id}")
-    public @ResponseBody String updateUserNameById(
+    @PutMapping("updateUser/{id}")
+    public @ResponseBody String updateUserInfoById(
             @PathVariable(value = "id") int id,
-            @RequestParam(value = "name") String name
+            @RequestParam(value = "name", required = false) String name,
+            @RequestParam(value = "password", required = false) String password
     ) {
         Optional<User> userOpt = userRepository.findById(id);
+        if (userOpt.isEmpty()) {
+            return "User not found";
+        }
+
         User user = userOpt.get();
 
-        user.setName(name);
+        // Update name if provided
+        if (name != null) {
+            user.setName(name);
+        }
+
+        // Update password if provided
+        if (password != null) {
+            user.setPassword(password);
+        }
+
         userRepository.save(user);
 
-        return "User saved successfully\nNew Information:\n"+user.toString();
-    }
-    //Update user's password by id
-    @PutMapping("updateUserName/{id}")
-    public @ResponseBody String updateUserPassById(
-            @PathVariable(value = "id") int id,
-            @RequestParam(value = "password") String password
-    ) {
-        Optional<User> userOpt = userRepository.findById(id);
-        User user = userOpt.get();
-
-        user.setPassword(password);
-        userRepository.save(user);
-
-        return "User saved successfully\nNew Information:\n"+ user;
+        return "User updated successfully\nNew Information:\n" + user.toString();
     }
 }

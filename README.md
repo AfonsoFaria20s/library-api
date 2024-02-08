@@ -65,35 +65,51 @@ This is a simple Spring Boot application for managing a library's database. The 
 
 ### Accounts
 
-- **Get all Accounts:**
+---
+
+- **Get All Users:**
   ```http
   GET /accounts
   ```
 
-- **Create Account:**
+  Retrieves information about all users.
+
+- **Find Users by Criteria:**
   ```http
-  POST /accounts/add?name={name}&email={email}&age={age}
+  GET /accounts/find?id={id}&name={name}&email={email}
   ```
 
-- **Get Account by ID:**
+  Finds users based on the specified criteria:
+    - `id`: Optional - User ID
+    - `name`: Optional - User name
+    - `email`: Optional - User email
+
+- **Add New User:**
   ```http
-  GET /accounts/byId/{accountId}
+  POST /accounts/add
   ```
 
-- **Get All Accounts by Name:**
+  Adds a new user to the system.
+    - `name`: String - User's name
+    - `email`: String - User's email
+    - `password`: String - User's password
+    - `age`: int - User's age
+
+- **Delete User By id:**
   ```http
-  GET /accounts/byName/{accountName}
+  DELETE /accounts/delete?id={id}
   ```
 
-- **Update Account: (Under Development)**
+  Deletes a user specified by their ID.
+
+- **Update User's Name and/or Password by ID:**
   ```http
-  PUT /accounts/{accountId}
+  PUT /accounts/updateUser/{id}?name={name}&password={password}
   ```
 
-- **Delete Account: (Under Development)**
-  ```http
-  DELETE /accounts/{accountId}
-  ```
+  Updates the name and/or password of a user specified by their ID.
+    - `name`: Optional - New user name
+    - `password`: Optional - New user password
 
 ### Borrowers _(UNDER DEVELOPMENT)_
 
