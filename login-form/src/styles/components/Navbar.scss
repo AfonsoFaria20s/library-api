@@ -1,0 +1,46 @@
+.navbar {
+    margin: 0;
+    height: 80px;
+    width: 100%;
+    position: relative;
+    background-color: #273b7a;
+
+    .icon {
+        width: 70px;
+        height: 100%;
+        float: left;
+        margin-left: 20px;
+
+        img {
+            height: 80px;
+            border-radius: 35px;
+            margin-top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+
+    .navigation {
+        display: flex;
+        flex-direction: row;
+        float: right;
+
+        div {
+            position: relative;
+            text-align: center;
+            line-height: 80px;
+            width: 100px;
+            color: white;
+            font-family: "Courier New", Courier, monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+
+            &:hover {
+                background-color: #3d57ad;
+                transition: 0.4s;
+                cursor: pointer;
+            }
+            transition: 0.4s;
+        }
+    }
+}

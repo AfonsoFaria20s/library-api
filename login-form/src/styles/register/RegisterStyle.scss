@@ -1,0 +1,48 @@
+.form {
+    display: inline-block;
+    box-shadow: 0 0 15px slategray;
+    width: 350px;
+    min-height: 400px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-top: 50px;
+    border-radius: 15px;
+    text-align: center;
+
+    #title {
+        font-size: 25px;
+        font-family: "Courier New", Courier, monospace;
+        margin: 30px;
+    }
+
+    input {
+        height: 30px;
+        width: 60%;
+        margin: 5px;
+        border-radius: 5px;
+        border: 1px solid slategray;
+        text-align: center;
+    }
+
+    #signup {
+        height: 30px;
+        width: 30%;
+        margin: 20px;
+    }
+
+    .register-account {
+        position: absolute;
+        bottom: 20px;
+        width: 100%;
+
+        span {
+            text-align: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 13px;
+
+            a {
+                text-decoration: none;
+            }
+        }
+    }
+}
