@@ -11,16 +11,29 @@ public class User {
     private int id;
     @Column(name = "name") private String name;
     @Column(name = "email") private String email;
+    @Column(name = "password") private String password;
     @Column(name = "age") private Integer age;
 
     // Default constructor
     public User() {
     }
 
-    // Parameterized constructor
-    public User(String name, String email, int age) {
+    public User(String name, String email, String password, Integer age) {
         this.name = name;
         this.email = email;
+        this.password = password;
+        this.age = age;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setAge(Integer age) {
         this.age = age;
     }
 
@@ -48,20 +61,13 @@ public class User {
         this.email = email;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
                 ", age=" + age +
                 '}';
     }
